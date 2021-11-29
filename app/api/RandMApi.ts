@@ -65,10 +65,12 @@ const getCharacter = async (characterId: number)  => {
     }
 }
 
-const getAllCharacters = async (characterId: number) => {
+const getAllCharacters = async (pageId: number) => {
     try {
-        const response = await Axios.get<AllCharacters>(`character/`)
+        const response = await Axios.get<AllCharacters>(`character/?page=${pageId}`)
+        console.log(response.data)
         return response.data
+        
     } catch (error) {
         throw "FEIL VED HENTING AV KARAKTER: " + error
     }
@@ -84,7 +86,7 @@ const getLocaiton = async (locationId: number) => {
 }
 const getEpisode = async (episodeId: number) => {
     try {
-        const response = await Axios.get<Episode>(`location/${episodeId}`)
+        const response = await Axios.get<Episode>(`episode/${episodeId}`)
         return response.data
     } catch (error) {
         throw "FEIL VED HENTING AV KARAKTER: " + error

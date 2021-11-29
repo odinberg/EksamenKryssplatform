@@ -1,9 +1,8 @@
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
 import React from 'react'
-import CharacterList from "../screens/CharacterList"
+import CharacterList from "../components/CharacterList"
 import CharacterScreen from "../screens/CharacterScreen"
 import EpisodesScreen from "../screens/EpisodesScreen"
-
 export type RootBottomTabPropTypes = {
     // Navigator: undefined;
     CharacterScreen: undefined;

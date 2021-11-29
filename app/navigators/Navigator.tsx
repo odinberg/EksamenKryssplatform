@@ -5,8 +5,8 @@ import {  NavigationContainer } from "@react-navigation/native"
 import { ScreenStack } from 'react-native-screens';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import CharacterScreen from '../screens/CharacterScreen';
-import CharacterList from '../screens/CharacterList';
-import EpisodesScreen from '../screens/EpisodesScreen';
+import CharacterList from '../components/CharacterList';
+import EpisodesScreen from "../screens/EpisodesScreen"
 
 export type RootStackParamList = {
   CharacterScreen: undefined;

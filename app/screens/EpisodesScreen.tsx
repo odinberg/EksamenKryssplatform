@@ -1,31 +1,21 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import RandMApi, { Episode } from '../api/RandMApi'
-import useApi from '../hooks/useApi'
+import EpisodesComponent from '../components/EpisodesComponent'
+import RandomId from '../components/RandomId/RandomCharacterId'
+import randomEpisodeId from '../components/RandomId/RandomEpisodeId'
 
-type Props = {episodeId: number}
-
-export default function EpisodesScreen({episodeId}: Props) {
-
-const {data: episode, error, loading, request: getEpisode} = useApi<Episode>(RandMApi.getEpisode)
-    useEffect(() => {
-        getEpisode(episodeId)
-    }, [episodeId])
-
-
+export default function EpisodesScreen() {
     return (
-        <View>
-            <Text> {episode?.name} </Text>
-            <Text> {episode?.episode} </Text>
+        <View style={styles.container}>
+                <EpisodesComponent episodeId={randomEpisodeId()}/>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "center",
-        }
-
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    }
 })
