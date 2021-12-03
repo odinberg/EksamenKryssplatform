@@ -6,7 +6,7 @@ import randomCharacterId from '../components/RandomId/RandomCharacterId'
 export default function CharacterScreen() {
     return (
         <View style={styles.container}>
-            <CharacterComponent characterId={randomCharacterId()}/>
+            <CharacterComponent character={randomCharacterId()}/>
         </View>
     )
 }

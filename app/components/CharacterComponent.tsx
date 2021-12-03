@@ -3,16 +3,16 @@ import { StyleSheet, Text, View, Image, FlatList, SafeAreaView } from 'react-nat
 import RandMApi, {Character} from '../api/RandMApi'
 import useApi from '../hooks/useApi'
 
-type Props = {characterId: number}
+type Props = {character: number}
 
-export default function CharacterComponent({characterId}: Props) {
+export default function CharacterComponent({character}: Props) {
 
     
 
-const {data: character, error, loading, request: getCharacter} = useApi<Character>(RandMApi.getCharacter)
+const {data: characterData, error, loading, request: getCharacter} = useApi<Character>(RandMApi.getCharacter)
     useEffect(() => {
-        getCharacter(characterId)
-    }, [characterId])
+        getCharacter(character)
+    }, [character])
 
 
     
@@ -22,19 +22,19 @@ const {data: character, error, loading, request: getCharacter} = useApi<Characte
 
 
             <Text>
-                {character?.name}
+                {characterData?.name}
             </Text>
             <Text>
-                {character?.gender}
+                {characterData?.gender}
             </Text>
             <Text>
-                {character?.species}
+                {characterData?.species}
             </Text>
             <Text>
-                {character?.status}
+                {characterData?.status}
             </Text>
             <Image source={{
-                uri: character?.image,
+                uri: characterData?.image,
                 width: 300,
                 height: 300,
             }} />
