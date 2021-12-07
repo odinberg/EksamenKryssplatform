@@ -22,8 +22,8 @@ export type AllCharacters = {
         count: number;
         pages: number;
         next: string;
-    },
-    results: {
+    };
+    results: [{
         id: number;
         name: string;
         status: string;
@@ -31,8 +31,8 @@ export type AllCharacters = {
         type: string;
         gender: string;
         image: string;
-    }[],
-    
+      }
+    ]     
 }
 // 126 total
 //Getting data from different locations
@@ -66,10 +66,9 @@ const getCharacter = async (characterId: number | string)  => {
     }
 }
 // Henter ut alle
-const getAllCharacters = async (pageId: number) => {
+const getAllCharacters = async (page: number) => {
     try {
-        const response = await Axios.get<AllCharacters>(`character/?page=${pageId}`)
-        console.log(response.data)
+        const response = await Axios.get<AllCharacters>(`character/?page=${page}`)
         return response.data
     } catch (error) {
         throw "FEIL VED HENTING AV KARAKTER: " + error
