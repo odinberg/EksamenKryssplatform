@@ -22,6 +22,7 @@ export type AllCharacters = {
         count: number;
         pages: number;
         next: string;
+        prev: string;
     };
     results: [{
         id: number;
@@ -31,6 +32,15 @@ export type AllCharacters = {
         type: string;
         gender: string;
         image: string;
+        origin : {
+            name: string;
+            url: string;
+        };
+        location: {
+            name: string;
+            url: string;
+        };
+        episode: []
       }
     ]     
 }

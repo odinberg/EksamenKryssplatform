@@ -3,12 +3,12 @@ import { View, Text, StyleSheet } from 'react-native'
 import CharacterList from '../components/CharacterList'
 import randomPageId from '../components/RandomId/RandomPageId'
 
+
 export default function CharacterListScreen() {
 
     
     return (
         <View style={styles.container}>
-
             <CharacterList page={2}  />
         </View>
     )
@@ -16,8 +16,8 @@ export default function CharacterListScreen() {
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
-        // alignItems: "center",
-        // justifyContent: "center",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
     }
 })

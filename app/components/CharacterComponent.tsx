@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
-import { StyleSheet, Text, View, Image, FlatList, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, Image,  SafeAreaView } from 'react-native'
 import RandMApi, {Character} from '../api/RandMApi'
 import useApi from '../hooks/useApi'
+import CustomButton from './CustomButton'
+import randomCharacterId from './RandomId/RandomCharacterId'
 
 type Props = {character: number}
 
@@ -14,12 +16,8 @@ const {data: characterData, error, loading, request: getCharacter} = useApi<Char
         getCharacter(character)
     }, [character])
 
-
-    
-
     return (
         <SafeAreaView style={styles.container}>
-
 
             <Text>
                 {characterData?.name}
@@ -39,13 +37,18 @@ const {data: characterData, error, loading, request: getCharacter} = useApi<Char
                 height: 300,
             }} />
 
-            
+            <CustomButton title={'Random character'} onPress={()=> getCharacter(randomCharacterId())}/>
+
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "red",
+        backgroundColor: "gray",
+        // justifyContent: "center",
+        alignItems: "center",
+        borderWidth: 1,
+        
     }
 })

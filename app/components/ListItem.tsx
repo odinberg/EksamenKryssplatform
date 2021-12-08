@@ -1,35 +1,48 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Button, GestureResponderEvent, Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 import Sprite from './Sprite'
 
 type Props = {
     title: string;
     subtitle: string;
-    imageUri?: string;    
+    status: string;
+    species: string;
+    imageUri?: string;
+    episode: number;    
+    onPress?: ((event: GestureResponderEvent) => void);
 }
 
 
-export default function ListItem({title, subtitle, imageUri}: Props) {
+export default function ListItem({title, subtitle, imageUri, status, species, episode, onPress}: Props) {
 
     return (
+        <TouchableHighlight onPress={onPress} underlayColor={"#ddd"}>
         <View style={styles.container}>
-            <Text>{title}</Text>
-            <Text>{subtitle}</Text>
-            <View>
+            <Text>Name: {title}</Text>
+            <Text>Gender: {subtitle}</Text>
+            <Text>Status: {status}</Text>
+            <Text>Species: {species}</Text>
+            <Text>Appears in episodes: {episode}</Text>
+            <View style={styles.image}>
             {imageUri && <Sprite uri={imageUri} />}
             </View>
         </View>
+        </TouchableHighlight>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        borderBottomWidth: 2,
         margin: 10,
         flex: 1,
-        flexDirection: "column",
+        // flexDirection: "row",
+        // justifyContent: "space-around",
     },
     image: {
-        borderWidth: 2,
-    }
+        borderWidth: 1,
+        marginLeft: 269,
+        marginTop: -80,
+    },
+
 })

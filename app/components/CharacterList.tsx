@@ -1,40 +1,60 @@
-import { Axios } from 'axios'
+import { NavigationProp, useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
- import { StyleSheet, SafeAreaView, FlatList, View, Text} from 'react-native'
- import RandMApi, {AllCharacters, Character} from '../api/RandMApi'
- import useApi from '../hooks/useApi'
-import CharacterCard from './CharacterCard'
+import { StyleSheet, SafeAreaView, FlatList, View, Text, Button} from 'react-native'
+import RandMApi, {AllCharacters} from '../api/RandMApi'
+import useApi from '../hooks/useApi'
+import { RootStackParamList } from '../navigators/Navigator'
+import CustomButton from './CustomButton'
+import ItemListSeperator from './ItemListSeperator'
 import ListItem from './ListItem'
+import randomPageId from './RandomId/RandomPageId'
 
  type Props = {
    page: number;
-   refreshList: () => void;
   }
 
-export default function CharacterList({page, refreshList}: Props) {
   
-const {data, error, loading, request: getPage} = useApi<AllCharacters>(RandMApi.getAllCharacters)
-useEffect(() => {
-    getPage(page)
-}, [page])
+export default function CharacterList({page}: Props) {
+  const [pageCount, setPageCount] = useState(page)
 
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const {data, error, loading, request: getPage} = useApi<AllCharacters>(RandMApi.getAllCharacters)
+  
+  useEffect(() => {
+      getPage(page = 1)
+      setPageCount(page)
+  }, [page])
+
+  
+  
    return (
 
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <View>
           <FlatList
             data={data?.results}
             keyExtractor={(item) => item.id.toString()}
+            ItemSeparatorComponent={() => ItemListSeperator()}
             renderItem={({item}) => (
               <ListItem
                 title={item.name}
                 subtitle={item.gender}
                 imageUri={item.image}
-                // onPress={() => console.log("Jeg ble tryket på")}
+                status={item.status}
+                species={item.species}
+                // onPress={() => navigation.navigate("CharacterDetails", {item: []})
+                // }
+                episode={item.episode.length}
               />
             )}
-            onRefresh={refreshList}
           />
+           <View style={styles.buttonContainer}>
+            <CustomButton title={'Prev page'} onPress={()=> getPage(setPageCount(pageCount - 1 ))}/>
+            <Text> Page: {pageCount} </Text>
+            <CustomButton title={'Next page'} onPress={()=> getPage(setPageCount(pageCount + 1))}/>
+            <CustomButton title={'Random page'} onPress={()=> getPage(randomPageId())}/>
+          </View>
         </View>
       </SafeAreaView>
     )
@@ -44,9 +64,15 @@ const styles = StyleSheet.create({
     container: {
       alignItems: "center",
       justifyContent: "center",
-      backgroundColor: "grey",
-      borderWidth: 2,
+      borderWidth: 1,
  
-   }
+   },
+   buttonContainer: {
+     flexDirection: "row",
+     alignItems: "center",
+     justifyContent: "center",
+     height: 60,
+     borderTopWidth: 1,
+   },
  })
 

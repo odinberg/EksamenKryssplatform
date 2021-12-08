@@ -7,10 +7,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import CharacterScreen from '../screens/CharacterScreen';
 import CharacterList from '../components/CharacterList';
 import EpisodesScreen from "../screens/EpisodesScreen"
+import CharacterDetails from '../components/CharacterDetails';
 
 export type RootStackParamList = {
   CharacterScreen: undefined;
-  CharacterList: undefined;
+  Characters: undefined;
+  CharacterDetails: {item: [];}
   EpisodesScreen: undefined;
 }
 
@@ -20,9 +22,10 @@ export default function Navigator() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Characters">
+        <Stack.Screen name="Characters" component={CharacterList}/>
+        <Stack.Screen name="CharacterDetails" component={CharacterDetails}/>
         <Stack.Screen name="CharacterScreen" component={CharacterScreen}/>
-        <Stack.Screen name="CharacterList" component={CharacterList}/>
         <Stack.Screen name="EpisodesScreen" component={EpisodesScreen}/>
       </Stack.Navigator>
 

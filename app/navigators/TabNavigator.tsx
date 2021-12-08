@@ -6,7 +6,7 @@ import EpisodesScreen from "../screens/EpisodesScreen"
 export type RootBottomTabPropTypes = {
     // Navigator: undefined;
     CharacterScreen: undefined;
-    CharacterList: undefined;
+    Characters: undefined;
     EpisodesScreen: undefined;
 }
 
@@ -16,7 +16,7 @@ export default function TabNavigator() {
 
     return(
         <Tab.Navigator>
-            <Tab.Screen name="CharacterList" component={CharacterList}/>
+            <Tab.Screen name="Characters" component={CharacterList}/>
             <Tab.Screen name="CharacterScreen" component={CharacterScreen}/>
             <Tab.Screen name="EpisodesScreen" component={EpisodesScreen}/>
         </Tab.Navigator>
