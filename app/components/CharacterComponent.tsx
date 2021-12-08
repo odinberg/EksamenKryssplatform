@@ -19,7 +19,7 @@ const {data: characterData, error, loading, request: getCharacter} = useApi<Char
     return (
         <SafeAreaView style={styles.container}>
 
-            <Text>
+            <Text style={styles.name}>
                 {characterData?.name}
             </Text>
             <Text>
@@ -49,6 +49,9 @@ const styles = StyleSheet.create({
         // justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,
-        
+    },
+    name: {
+        fontSize: 20,
+        fontWeight: "bold"
     }
 })

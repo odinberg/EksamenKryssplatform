@@ -5,7 +5,7 @@ import TabNavigator from './TabNavigator';
 
 export type RootLoginParamList = {
     Login: undefined;
-    Authenticated: {username: string};
+    Authenticated: {user: string};
 
 }
 

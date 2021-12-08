@@ -1,8 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import {  NavigationContainer } from "@react-navigation/native"
-import { ScreenStack } from 'react-native-screens';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import CharacterScreen from '../screens/CharacterScreen';
 import CharacterList from '../components/CharacterList';

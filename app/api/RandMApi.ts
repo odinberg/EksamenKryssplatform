@@ -85,6 +85,16 @@ const getAllCharacters = async (page: number) => {
     }
 }
 
+const getCharacterSearch = async (name: string) => {
+    try {
+        const response = await Axios.get<AllCharacters>(`character/?name=${name}`)
+        return response.data
+    } catch (error) {
+        throw "FEIL VED HENTING AV KARAKTER: " + error
+    }
+    
+}
+
 const getLocaiton = async (locationId: number) => {
     try {
         const response = await Axios.get<Location>(`location/${locationId}`)
@@ -107,4 +117,5 @@ export default {
     getLocaiton,
     getEpisode,
     getAllCharacters,
+    getCharacterSearch
 }
