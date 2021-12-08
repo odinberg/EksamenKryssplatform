@@ -22,8 +22,8 @@ export default function Navigator() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Characters">
-        <Stack.Screen name="Characters" component={CharacterList}/>
+      <Stack.Navigator initialRouteName="Characters" >
+        <Stack.Screen name="Characters" component={CharacterList} />
         <Stack.Screen name="CharacterDetails" component={CharacterDetails}/>
         <Stack.Screen name="CharacterScreen" component={CharacterScreen}/>
         <Stack.Screen name="EpisodesScreen" component={EpisodesScreen}/>

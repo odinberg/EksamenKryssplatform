@@ -22,9 +22,8 @@ export default function CharacterList({page}: Props) {
   const {data, error, loading, request: getPage} = useApi<AllCharacters>(RandMApi.getAllCharacters)
   
   useEffect(() => {
-      getPage(page = 1)
-      setPageCount(page)
-  }, [page])
+      getPage(pageCount)
+  }, [pageCount])
 
   
   
@@ -50,7 +49,7 @@ export default function CharacterList({page}: Props) {
             )}
           />
            <View style={styles.buttonContainer}>
-            <CustomButton title={'Prev page'} onPress={()=> getPage(setPageCount(pageCount - 1 ))}/>
+            <CustomButton title={'Prev page'} onPress={()=> getPage(setPageCount(pageCount - 1))}/>
             <Text> Page: {pageCount} </Text>
             <CustomButton title={'Next page'} onPress={()=> getPage(setPageCount(pageCount + 1))}/>
             <CustomButton title={'Random page'} onPress={()=> getPage(randomPageId())}/>
