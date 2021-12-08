@@ -9,19 +9,16 @@ import ItemListSeperator from './ItemListSeperator'
 import ListItem from './ListItem'
 import randomPageId from './RandomId/RandomPageId'
 
- type Props = {
-   page: number;
-  }
-
   
-export default function CharacterList({page}: Props) {
-  const [pageCount, setPageCount] = useState(page)
+export default function CharacterList() {
+  const [pageCount, setPageCount] = useState(Number)
 
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const {data, error, loading, request: getPage} = useApi<AllCharacters>(RandMApi.getAllCharacters)
   
   useEffect(() => {
+      
       getPage(pageCount)
   }, [pageCount])
 

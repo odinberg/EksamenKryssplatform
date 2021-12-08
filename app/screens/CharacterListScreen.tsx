@@ -9,7 +9,7 @@ export default function CharacterListScreen() {
     
     return (
         <View style={styles.container}>
-            <CharacterList page={2}  />
+            <CharacterList/>
         </View>
     )
 }
